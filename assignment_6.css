@@ -1,0 +1,82 @@
+/* File:  /~alora/assignment_6.css
+  Andry Lora, UMass Lowell Computer Science, Andrylr@gmail.com
+  Copyright (c) 2015 by Andry Lora.  All rights reserved.  
+  File created:October 14,2015
+    updated by Andry Lora on October 20, 2015
+ */
+
+
+
+table, th, td {
+    border: 1px solid black;
+    font-size: 20px;
+    float:center;
+     font-family:"cursive",Zapf Chancery, cursive;
+
+}
+
+table{
+	 margin-left:auto; 
+    margin-right:auto;
+}
+
+
+td, th { 
+    padding: 5px;
+}
+
+#valueinput{
+	text-align: center;
+	font-family:"cursive",Zapf Chancery, cursive;
+}
+
+
+th{
+background-color: black;
+color:white;
+}
+/*Aligns the header text into the middle while giving it a 4 pixel padding
+and changing the font to a font from the cursive family */
+body {
+     background-color:#E6E6FA;
+ }
+#header {
+    text-align:center;
+    padding:4px;
+    font-family:"cursive",Zapf Chancery, cursive;
+}
+/*gives the index a 4 pixel padding while pushing it to the left */
+#index { 
+    padding:4px;
+    float:left;
+}
+
+  /*The color of the links were originally a dark blue when not visited this 
+    makes it white instead since my background is a grey color.*/
+    
+a:link {
+    color: black;
+    font-family:"cursive",Zapf Chancery, cursive;
+}
+
+/*the color for a visited link is a purple color and this style changes that to
+a light blue color*/
+
+a:visited {
+    color:black;
+}
+.leftcolumn{
+	background:black;
+}
+
+#instructions{
+text-align: center;
+}
+
+#clicking{
+	text-align: center;
+}
+
+p{
+	text-align: center;
+}

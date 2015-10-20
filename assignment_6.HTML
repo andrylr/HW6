@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">  
+    <link rel="stylesheet" type="text/css" href="assignment_6.css">
+    <title>Assignment 6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--  File:  /~alora/assignment_6.html
+    91.461 Assignment:6
+    Andry Lora, UMass Lowell Computer Science, Andrylr@gmail.com
+    Copyright (c) 2015 by Andry Lora.  All rights reserved.  
+    File created:October 14,2015
+    updated by Andry Lora on October 20, 2015
+        -->
+
+
+
+    <!--
+    load jQuery library from the Google Content Delivery Network (CDN)
+    see http://encosia.com/3-reasons-why-you-should-let-google-host-jquery-for-you/
+    however, note that you obviously must be online for this to work
+    alternatively, you can download jQuery and store it locally from
+     http://jquery.com/download/
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+    "use strict";
+    function TableStart() {
+    	/* used method described on http://stackoverflow.com/questions/11563638/javascript-get-input-text-value to obtain the value
+    	in the text boxes*/
+    var rowS = document.getElementById('row_start').value
+    var rowE = document.getElementById('row_end').value
+    var columnS = document.getElementById('column_start').value
+    var columnE = document.getElementById('column_end').value
+
+    /* outputed to the console using the method mentioned in http://www.w3schools.com/js/js_output.asp tried using document.write() but it updated the page and 
+    removed everything else*/
+
+	console.log(rowS);
+	console.log(rowE);
+	console.log(columnS);
+	console.log(columnE);
+
+    /*Calculates the length of the rows and the height of the column for later 
+    use in loops */
+	var rowlength = rowE-rowS;
+	var columnheight = columnE-columnS;
+	
+	//console.log(rowlength);
+	//console.log(columnheight);
+
+    /*Checks in larger value was iput first if so swaps the values and reevaluates the length of the row*/
+	if (rowE < rowS) {
+            alert("Higher value was input first for Multiplier,please try again with swapped values");
+            /*var holder = rowS;
+            rowS=rowE;
+            rowE=holder;
+            var rowlength = rowE-rowS;
+            console.log('new row length is: ' + rowlength);*/
+            return false;
+        }
+
+    if (columnE < columnS) {
+            alert("Higher value was input first for Multiplicand,please try again with swapped values");
+            /*var hold = columnS;
+            columnS=columnE;
+            columnE=hold;
+            var columnheight = columnE-columnS;
+           // console.log('column height is ' + columnheight);*/
+            return false;
+        }
+
+    if (rowlength > 10) {
+            alert("Range of values for row are larger than 10,input a smaller range");
+            return false;
+        }
+    if (columnheight > 10) {
+            alert("Range of values for column are larger than 10 input a smaller range");
+            return false;
+        }
+
+    /*Using the table method describe on http://www.w3schools.com/tags/tag_thead.asp andthe text formatting javascript examples from last homework I created the table,I tried using document.write() but I could not get that to work properly.*/
+    var TableContent = "";
+    var i,j,multiplicand,multiplier,multiplied; 
+       
+        
+    /*Starts creating the table and use the thead to place the numbers 
+    in the top of the header,placed an X to represent multiplication and 
+    also to shift all the other header values to the right*/
+    TableContent += "<table>";
+    TableContent += "<thead>";
+    TableContent +="<tr>";
+    TableContent += "<th>";
+    TableContent += "X";
+    TableContent +="</th>";
+
+    /*use a for loop to put the values in the header of the table using 
+    the range of values given to us by the user, Also use the Number() function 
+    to convert object values to their numbers as explained in 
+    http://www.w3schools.com/jsref/jsref_number.asp*/
+        for (i = 0; i <= rowlength; i++) {
+            TableContent += "<th>";
+            TableContent +=Number(rowS) + i
+            TableContent +="</th>";
+            
+        }
+    /*Close the head of the table and start the body of the table to insert
+    the multiplied values*/
+    TableContent += "</thead>";
+    TableContent += "<tbody>";
+    TableContent += "<tr>";
+
+    /*Picks out the first value inputed in the multiplicand box by the user,converts it into a number using Number() and places it as the first element in the table row,this represents the value that is going to be multiplied out,i increments by one when the value has been stored  */
+
+        TableContent += '<h1 class="leftcolumn">';
+    for (i = 0; i <= columnheight; i++) {
+        TableContent += "<td>";
+        TableContent += (Number(columnS) + i);
+        TableContent += "</td>";
+        TableContent += "</h1>";
+    /*Similar to the loop above it grabs the multiplicand and stores it into a value,it also does this with the multiplier,it mutiplies them out and stores it.At
+    the end of the for loop there is an if statement that makes sure it has properly reached the end of the rowlength and closes the table row */
+         
+    for (j = 1; j <= rowlength+1; j++) {
+        TableContent += "<td>";
+        multiplicand = (Number(columnS) + i);
+        multiplier = Number(rowS) + (j - 1);
+        multiplied = multiplicand* multiplier;
+        console.log(multiplied);
+        TableContent += multiplicand* multiplier;
+        TableContent +="</td>";
+        if(j==rowlength+1){
+        TableContent += "</tr>";
+                    }
+                    
+            }
+            
+        }
+        /*Closes the table body an the table which were previously opened before loops
+        started*/
+        TableContent += "</tbody>";
+        TableContent +="</table>";
+        // place dynamic content on page
+        document.getElementById("table").innerHTML = TableContent;
+
+
+}
+        </script>
+
+</head>
+<body>
+    <!--Create an id call index which will be used to navigate back to the 
+        index page-->
+        <div id="index"><a href="http://weblab.cs.uml.edu/~alora/index.html">Home</a></div>
+
+<!--Created a div for the header to change the text or move as wanted in the css file -->
+        <div id="header"><h1>91.461 Assignment No. 6:Creating an Interactive Dynamic Table </h1></div>
+        <div id="instructions">Enter Lower Value first then Higher value,If range of
+        	value greater than 10 table will not be created and if larger value is 
+        	inputed first the table will not be created.</div>
+        <br>
+        <form id="valueinput">
+            multiplier starts: <input type="text" name="row_start" id="row_start">
+            to
+            <input type="text" name="row_end" id="row_end">
+            <br>
+            multiplicand starts: <input type="text" name="column_start" id="column_start">
+            to
+            <input type="text" name="column_end" id="column_end">
+            <br>
+        </form>
+        <p>Click "Submit" to generate table.</p>
+        <div id = "clicking"><button onclick="TableStart()">Submit My Values</button></div>
+        <div id="table"></div>
+</body>
+</html>
