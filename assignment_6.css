@@ -6,7 +6,8 @@
  */
 
 
-
+/*For table,standard cell, and table header it creates a border around them changes the 
+font size and type and floats them at the center*/
 table, th, td {
     border: 1px solid black;
     font-size: 20px;
@@ -15,36 +16,41 @@ table, th, td {
 
 }
 
+/*Centers the table*/
 table{
 	 margin-left:auto; 
     margin-right:auto;
 }
 
-
+/*gives the cells more padding and with this is creates more space between the 
+values so they*/
 td, th { 
     padding: 5px;
 }
-
+/*Centers the form and changes its fonts*/
 #valueinput{
 	text-align: center;
 	font-family:"cursive",Zapf Chancery, cursive;
 }
 
-
+/*Sets the background of the table headers to black*/
 th{
 background-color: black;
 color:white;
 }
-/*Aligns the header text into the middle while giving it a 4 pixel padding
-and changing the font to a font from the cursive family */
+
+/*makes the background a blue color*/
 body {
      background-color:#E6E6FA;
  }
+/*Aligns the header text into the middle while giving it a 4 pixel padding
+and changing the font to a font from the cursive family */
 #header {
     text-align:center;
     padding:4px;
     font-family:"cursive",Zapf Chancery, cursive;
 }
+
 /*gives the index a 4 pixel padding while pushing it to the left */
 #index { 
     padding:4px;
@@ -52,8 +58,7 @@ body {
 }
 
   /*The color of the links were originally a dark blue when not visited this 
-    makes it white instead since my background is a grey color.*/
-    
+    makes it white instead since my background is a grey color.*/   
 a:link {
     color: black;
     font-family:"cursive",Zapf Chancery, cursive;
@@ -61,22 +66,23 @@ a:link {
 
 /*the color for a visited link is a purple color and this style changes that to
 a light blue color*/
-
 a:visited {
     color:black;
 }
-.leftcolumn{
-	background:black;
-}
 
+/*grabs the paragraph in instruction div centers and changes the font type*/
 #instructions{
 text-align: center;
+ font-family:"cursive",Zapf Chancery, cursive;
 }
 
+/*Centers the button*/
 #clicking{
 	text-align: center;
 }
 
+/*Centers the paragraphs*/
 p{
 	text-align: center;
 }
+

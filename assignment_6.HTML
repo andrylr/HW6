@@ -25,7 +25,6 @@
      http://jquery.com/download/
     -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
     <script>
     "use strict";
     function TableStart() {
@@ -52,9 +51,9 @@
 	//console.log(rowlength);
 	//console.log(columnheight);
 
-    /*Checks in larger value was iput first if so swaps the values and reevaluates the length of the row*/
-	if (rowE < rowS) {
-            alert("Higher value was input first for Multiplier,please try again with swapped values");
+    /*Checks if larger value was input first if so alerts to input the values in proper order*/
+	if (rowS > rowE) {
+            alert("Higher value was input first for Multiplier,please try again with proper values");
             /*var holder = rowS;
             rowS=rowE;
             rowE=holder;
@@ -63,8 +62,9 @@
             return false;
         }
 
+    /*Checks if larger value was input first if so alerts to input the values in proper order*/
     if (columnE < columnS) {
-            alert("Higher value was input first for Multiplicand,please try again with swapped values");
+            alert("Higher value was input first for Multiplicand,please try again with proper values");
             /*var hold = columnS;
             columnS=columnE;
             columnE=hold;
@@ -73,10 +73,13 @@
             return false;
         }
 
+        /*Checks if the rowlength is more thsn 10 if so tells the user to input smaller range*/
     if (rowlength > 10) {
             alert("Range of values for row are larger than 10,input a smaller range");
             return false;
         }
+
+         /*Checks if the columnheight is more thsn 10 if so tells the user to input smaller range*/
     if (columnheight > 10) {
             alert("Range of values for column are larger than 10 input a smaller range");
             return false;
@@ -101,28 +104,30 @@
     the range of values given to us by the user, Also use the Number() function 
     to convert object values to their numbers as explained in 
     http://www.w3schools.com/jsref/jsref_number.asp*/
-        for (i = 0; i <= rowlength; i++) {
-            TableContent += "<th>";
-            TableContent +=Number(rowS) + i
-            TableContent +="</th>";
+
+    for (i = 0; i <= rowlength; i++) {
+        TableContent += "<th>";
+        TableContent +=Number(rowS) + i
+        TableContent +="</th>";
             
         }
+
     /*Close the head of the table and start the body of the table to insert
     the multiplied values*/
+
     TableContent += "</thead>";
     TableContent += "<tbody>";
     TableContent += "<tr>";
 
     /*Picks out the first value inputed in the multiplicand box by the user,converts it into a number using Number() and places it as the first element in the table row,this represents the value that is going to be multiplied out,i increments by one when the value has been stored  */
-
-        TableContent += '<h1 class="leftcolumn">';
+        TableContent += '<h1>';
     for (i = 0; i <= columnheight; i++) {
         TableContent += "<td>";
         TableContent += (Number(columnS) + i);
         TableContent += "</td>";
-        TableContent += "</h1>";
-    /*Similar to the loop above it grabs the multiplicand and stores it into a value,it also does this with the multiplier,it mutiplies them out and stores it.At
-    the end of the for loop there is an if statement that makes sure it has properly reached the end of the rowlength and closes the table row */
+        
+
+    /*Similar to the loop above it grabs the multiplicand and stores it into a value,it also does this with the multiplier,it multiplies them out and stores it.At the end of the for loop there is an if statement that makes sure it has properly reached the end of the rowlength and closes the table row */
          
     for (j = 1; j <= rowlength+1; j++) {
         TableContent += "<td>";
@@ -130,7 +135,7 @@
         multiplier = Number(rowS) + (j - 1);
         multiplied = multiplicand* multiplier;
         console.log(multiplied);
-        TableContent += multiplicand* multiplier;
+        TableContent += multiplied;
         TableContent +="</td>";
         if(j==rowlength+1){
         TableContent += "</tr>";
@@ -141,12 +146,10 @@
         }
         /*Closes the table body an the table which were previously opened before loops
         started*/
+        TableContent += "</h1>";
         TableContent += "</tbody>";
         TableContent +="</table>";
-        // place dynamic content on page
         document.getElementById("table").innerHTML = TableContent;
-
-
 }
         </script>
 
@@ -158,10 +161,16 @@
 
 <!--Created a div for the header to change the text or move as wanted in the css file -->
         <div id="header"><h1>91.461 Assignment No. 6:Creating an Interactive Dynamic Table </h1></div>
+
+        <!-- This section acts as the instruction for the users so they can input the values in properly -->
         <div id="instructions">Enter Lower Value first then Higher value,If range of
         	value greater than 10 table will not be created and if larger value is 
-        	inputed first the table will not be created.</div>
+        	inputed first the table will not be created.
+        </div>
         <br>
+
+        <!--This is the form for the input of ranges for the the multiplicand and the 
+        multiplier.At the bottom there is onclick for the button which when clicked calls the TableStart function. -->
         <form id="valueinput">
             multiplier starts: <input type="text" name="row_start" id="row_start">
             to
@@ -174,6 +183,7 @@
         </form>
         <p>Click "Submit" to generate table.</p>
         <div id = "clicking"><button onclick="TableStart()">Submit My Values</button></div>
+        <!-- dynamic content comming from javascript -->
         <div id="table"></div>
 </body>
 </html>
