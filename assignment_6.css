@@ -7,12 +7,11 @@
 
 
 /*For table,standard cell, and table header it creates a border around them changes the 
-font size and type and floats them at the center*/
+font size and type*/
 table, th, td {
     border: 1px solid black;
     font-size: 20px;
-    float:center;
-     font-family:"cursive",Zapf Chancery, cursive;
+    font-family:"cursive",Zapf Chancery, cursive;
 
 }
 
